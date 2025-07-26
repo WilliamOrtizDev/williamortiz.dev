@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Ortiz - DevSecOps Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Feather Icons for social media icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+    <header id="home">
+        <nav>
+            <div class="container">
+                <h1><a href="#home">William Ortiz</a></h1>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="hero container">
+            <div class="hero-text">
+                <h2>Hi, I'm William Ortiz</h2>
+                <h3>A Passionate DevSecOps Engineer</h3>
+                <p>Bridging the gap between Development, Security, and Operations to build resilient and secure systems.</p>
+                <div class="hero-buttons">
+                    <a href="assets/files/William_Ortiz_Resume.pdf" target="_blank" class="button primary" download>Download Resume</a>
+                    <a href="#contact" class="button secondary">Get In Touch</a>
+                </div>
+                <div class="social-links">
+                    <a href="mailto:contact@williamortiz.dev"><i data-feather="mail"></i></a>
+                    <a href="https://github.com/WilliamOrtizDev" target="_blank"><i data-feather="github"></i></a>
+                    <a href="https://www.linkedin.com/in/williamortizdev/" target="_blank"><i data-feather="linkedin"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                 <img src="assets/images/profile-photo.jpeg" alt="Profile Picture of William Ortiz" class="profile-pic">
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="fade-in-section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="bio">
+                    <p>I am a dedicated DevSecOps Engineer with a strong background in system administration and cybersecurity. My expertise lies in automating security practices throughout the software development lifecycle, ensuring compliance, and building robust, scalable, and secure infrastructures.</p>
+                    <p>I thrive on implementing secure CI/CD pipelines, performing vulnerability assessments, managing cloud security, and fostering a security-first culture. My goal is to integrate security seamlessly, making it an enabler rather than a roadblock for innovation.</p>
+                    <p>When I'm not securing pipelines, you might find me exploring new security tools, contributing to open-source projects, or enjoying the Florida sunshine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="fade-in-section">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="project-grid" id="project-grid">
+                <!-- GitHub projects will be loaded here dynamically -->
+                 <div class="project-grid-message">Loading projects...</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="fade-in-section">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-container">
+                <span class="skill-pill">AWS</span>
+                <span class="skill-pill">Gitlab CI/CD</span>
+                <span class="skill-pill">Packer</span>
+                <span class="skill-pill">Docker</span>
+                <span class="skill-pill">Kubernetes</span>
+                <span class="skill-pill">Terraform</span>
+                <span class="skill-pill">Ansible</span>
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">Bash</span>
+                <span class="skill-pill">Red Hat Linux</span>
+                <span class="skill-pill">IAM</span>
+                <span class="skill-pill">Vulnerability Management</span>
+                <span class="skill-pill">Project Management</span> 
+                <span class="skill-pill">Security</span>
+                <span class="skill-pill">Networking</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new projects, collaborations, or opportunities in DevSecOps. Feel free to reach out!</p>
+            
+            <form class="contact-form" action="https://formspree.io/f/xqalqnrg" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="button primary">Send Message</button>
+            </form>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> William Ortiz.</p>
+            <div class="social-links">
+                <a href="mailto:contact@williamortiz.dev"><i data-feather="mail"></i></a>
+                <a href="https://github.com/WilliamOrtizDev" target="_blank"><i data-feather="github"></i></a>
+                <a href="https://www.linkedin.com/in/williamortizdev/" target="_blank"><i data-feather="linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // --- DYNAMICALLY LOAD GITHUB PROJECTS ---
+        window.addEventListener('load', function() {
+            const githubUsername = 'WilliamOrtizDev';
+            const projectGrid = document.getElementById('project-grid');
+
+            fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&direction=desc`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(repos => {
+                    projectGrid.innerHTML = ''; // Clear the loading message
+
+                    if (repos.length === 0) {
+                        projectGrid.innerHTML = '<div class="project-grid-message">No public repositories found.</div>';
+                        return;
+                    }
+
+                    repos.forEach(repo => {
+                        const projectCard = document.createElement('div');
+                        projectCard.className = 'project-card';
+
+                        const repoName = document.createElement('h3');
+                        repoName.textContent = repo.name.replace(/[-_]/g, ' ');
+
+                        const repoDescription = document.createElement('p');
+                        repoDescription.textContent = repo.description || 'No description provided.';
+                        
+                        const repoLanguage = document.createElement('p');
+                        repoLanguage.className = 'tech-stack';
+                        repoLanguage.textContent = repo.language ? `Primary Language: ${repo.language}` : 'Language not specified';
+
+                        const repoLink = document.createElement('a');
+                        repoLink.href = repo.html_url;
+                        repoLink.target = '_blank';
+                        repoLink.className = 'button small secondary';
+                        repoLink.textContent = 'View on GitHub';
+                        
+                        projectCard.appendChild(repoName);
+                        projectCard.appendChild(repoDescription);
+                        projectCard.appendChild(repoLanguage);
+                        projectCard.appendChild(repoLink);
+                        
+                        projectGrid.appendChild(projectCard);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching GitHub repos:', error);
+                    projectGrid.innerHTML = '<div class="project-grid-message">Could not load projects from GitHub. Please try again later.</div>';
+                });
+        });
+        
+        // --- FADE-IN EFFECT ON SCROLL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const sections = document.querySelectorAll('.fade-in-section');
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- INITIALIZE FEATHER ICONS ---
+        feather.replace();
+    </script>
+</body>
+</html>
