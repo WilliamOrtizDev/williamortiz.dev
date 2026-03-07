@@ -1,0 +1,14 @@
+{
+    "name": "williamortiz-dev",
+    "version": "1.0.0",
+    "private": true,
+    "description": "William Ortiz - DevSecOps Portfolio Website",
+    "scripts": {
+        "dev": "vercel dev",
+        "build": "echo 'Static site - no build step required'",
+        "deploy": "vercel --prod"
+    },
+    "dependencies": {
+        "resend": "^4.0.0"
+    }
+}
