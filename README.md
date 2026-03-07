@@ -13,7 +13,9 @@ Personal portfolio website showcasing skills, projects, and expertise in DevSecO
 - Scroll-driven fade-in animations (respects `prefers-reduced-motion`)
 - ADA/WCAG 2.1 AA accessible: skip link, ARIA labels, keyboard navigation, focus indicators
 - SEO optimized: Open Graph, Twitter Cards, JSON-LD structured data, sitemap
-- Security headers via Vercel configuration
+- Security headers via Cloudflare Pages `_headers` configuration
+- Privacy Policy and Terms of Service pages
+- Custom 404 page with terminal-themed design
 - LaTeX resume source for version-controlled, text-as-code resume management
 
 ## Tech Stack
@@ -21,25 +23,31 @@ Personal portfolio website showcasing skills, projects, and expertise in DevSecO
 - **Frontend:** HTML, CSS, vanilla JavaScript
 - **Icons:** [Feather Icons](https://feathericons.com)
 - **Fonts:** [Inter](https://rsms.me/inter/) + [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
-- **Contact API:** [Resend](https://resend.com) via Vercel serverless function
-- **Deployment:** [Vercel](https://vercel.com)
+- **Contact API:** [Resend](https://resend.com) via Cloudflare Pages Function
+- **Deployment:** [Cloudflare Pages](https://pages.cloudflare.com)
 
 ## Project Structure
 
 ```
 ├── index.html                          # Main page
+├── privacy.html                        # Privacy Policy
+├── terms.html                          # Terms of Service
+├── 404.html                            # Custom 404 page
 ├── assets/
-│   ├── css/style.css                   # Stylesheet
+│   ├── css/
+│   │   ├── style.css                   # Main stylesheet
+│   │   └── pages.css                   # Secondary pages stylesheet
 │   ├── files/William_Ortiz_Resume.pdf  # Downloadable resume
 │   └── images/                         # Profile photo, favicon
-├── api/
-│   └── send.js                         # Vercel serverless function (Resend)
+├── functions/
+│   └── api/
+│       └── send.js                     # Cloudflare Pages Function (Resend)
 ├── resume/
 │   └── William_Ortiz_Resume.tex        # LaTeX resume source
+├── _headers                            # Cloudflare security headers
 ├── sitemap.xml                         # SEO sitemap
 ├── robots.txt                          # Search engine directives
-├── vercel.json                         # Vercel config & security headers
-└── package.json                        # Dependencies (resend)
+└── package.json                        # Scripts
 ```
 
 ## Setup
@@ -52,26 +60,21 @@ Personal portfolio website showcasing skills, projects, and expertise in DevSecO
    cd williamortiz.dev
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file with your Resend API key:
+2. Create a `.dev.vars` file with your Resend API key:
    ```
    RESEND_API_KEY=re_your_api_key_here
    ```
 
-4. Run the development server (requires [Vercel CLI](https://vercel.com/docs/cli)):
+3. Run the development server (requires [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)):
    ```bash
-   npx vercel dev
+   npm run dev
    ```
 
 ### Resend Configuration
 
 1. Sign up at [resend.com](https://resend.com) and get an API key
 2. Verify your domain (`williamortiz.dev`) in the Resend dashboard
-3. Set `RESEND_API_KEY` as an environment variable in your Vercel project settings
+3. Set `RESEND_API_KEY` as an environment variable in the Cloudflare Pages dashboard under **Settings > Environment variables**
 
 ### Building the LaTeX Resume
 
@@ -84,7 +87,7 @@ Requires a LaTeX distribution (e.g., TeX Live, MiKTeX) with `fontawesome5`, `tit
 
 ## Deployment
 
-Push to `main` and Vercel will automatically deploy. Ensure `RESEND_API_KEY` is set in the Vercel project environment variables.
+Push to `main` and Cloudflare Pages will automatically deploy. Ensure `RESEND_API_KEY` is set in the Cloudflare Pages environment variables.
 
 ## License
 

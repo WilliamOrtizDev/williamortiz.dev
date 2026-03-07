@@ -4,11 +4,7 @@
     "private": true,
     "description": "William Ortiz - DevSecOps Portfolio Website",
     "scripts": {
-        "dev": "vercel dev",
-        "build": "echo 'Static site - no build step required'",
-        "deploy": "vercel --prod"
-    },
-    "dependencies": {
-        "resend": "^4.0.0"
+        "dev": "npx wrangler pages dev . --compatibility-date=2024-01-01",
+        "deploy": "npx wrangler pages deploy ."
     }
 }
