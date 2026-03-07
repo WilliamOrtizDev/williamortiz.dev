@@ -257,7 +257,7 @@ h2::after {
 /* ═══════════════════════════════════════════
    Navigation
    ═══════════════════════════════════════════ */
-nav {
+#navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -270,7 +270,7 @@ nav {
     transition: background var(--transition-base), box-shadow var(--transition-base);
 }
 
-nav.scrolled {
+#navbar.scrolled {
     background: rgba(15, 15, 15, 0.97);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
@@ -1172,7 +1172,7 @@ footer {
    Print Styles
    ═══════════════════════════════════════════ */
 @media print {
-    nav, .hero-scroll-indicator, .back-to-top, .nav-toggle {
+    #navbar, .hero-scroll-indicator, .back-to-top, .nav-toggle {
         display: none !important;
     }
 
