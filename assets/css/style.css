@@ -720,64 +720,65 @@ h2::after {
 }
 
 /* ═══════════════════════════════════════════
-   Skills Section
+   Education & Certifications Section
    ═══════════════════════════════════════════ */
-.skills-grid {
+.edu-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
     max-width: 900px;
     margin: 2rem auto 0;
 }
 
-.skill-category {
+.edu-card {
     background: var(--color-dark-lighter);
     border-radius: var(--radius-md);
-    padding: 2rem;
+    padding: 1.75rem;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: border-color var(--transition-base);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: border-color var(--transition-base), transform var(--transition-base);
 }
 
-.skill-category:hover {
+.edu-card:hover {
     border-color: var(--color-primary-glow);
+    transform: translateY(-3px);
 }
 
-.skill-category h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-dark-text);
-    margin-bottom: 1rem;
+.edu-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(128, 0, 0, 0.2);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
 }
 
-.skill-category h3 svg {
-    width: 18px;
-    height: 18px;
+.edu-icon svg {
+    width: 22px;
+    height: 22px;
     color: var(--color-primary-light);
 }
 
-.skill-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.skill-pill {
-    background: rgba(128, 0, 0, 0.15);
+.edu-details h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
     color: var(--color-dark-text);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px solid rgba(128, 0, 0, 0.3);
-    transition: background var(--transition-fast), border-color var(--transition-fast);
+    margin-bottom: 0.35rem;
 }
 
-.skill-pill:hover {
-    background: rgba(128, 0, 0, 0.3);
-    border-color: var(--color-primary);
+.edu-institution {
+    font-size: 0.95rem;
+    color: var(--color-dark-text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.edu-meta {
+    font-size: 0.85rem;
+    color: rgba(250, 248, 244, 0.45);
 }
 
 /* ═══════════════════════════════════════════
@@ -1102,8 +1103,8 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    /* Skills */
-    .skills-grid {
+    /* Education */
+    .edu-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1158,8 +1159,8 @@ footer {
         padding: 1.5rem 1rem;
     }
 
-    .skill-category {
-        padding: 1.5rem;
+    .edu-card {
+        padding: 1.25rem;
     }
 
     .back-to-top {
