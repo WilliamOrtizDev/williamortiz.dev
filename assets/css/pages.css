@@ -3,17 +3,6 @@
    (Privacy, Terms, 404)
    ═══════════════════════════════════════════ */
 
-.nav-back {
-    color: var(--color-dark-text-muted);
-    border-color: rgba(250, 248, 244, 0.25);
-}
-
-.nav-back:hover {
-    color: #fff;
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-}
-
 /* ── Legal Pages (Privacy, Terms) ──────── */
 .page-content {
     padding: calc(var(--nav-height) + 3rem) 0 4rem;

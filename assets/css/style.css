@@ -1007,6 +1007,7 @@ footer {
     }
 
     .nav-links {
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -1017,15 +1018,11 @@ footer {
         align-items: center;
         justify-content: center;
         gap: 2.5rem;
-        opacity: 0;
-        visibility: hidden;
         z-index: 999;
-        transition: opacity var(--transition-base), visibility var(--transition-base);
     }
 
     .nav-links.active {
-        opacity: 1;
-        visibility: visible;
+        display: flex;
     }
 
     .nav-links a {
