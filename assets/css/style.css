@@ -841,9 +841,13 @@ nav.scrolled {
 }
 
 .btn-loading {
-    display: inline-flex;
+    display: none;
     align-items: center;
     gap: 0.5rem;
+}
+
+.btn-loading:not([hidden]) {
+    display: inline-flex;
 }
 
 .spinner {
@@ -896,6 +900,22 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.footer-middle nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-middle nav a {
+    color: var(--color-dark-text-muted);
+    font-size: 0.9rem;
+    transition: color var(--transition-fast);
+}
+
+.footer-middle nav a:hover {
+    color: var(--color-primary-light);
 }
 
 .footer-container p {
@@ -992,13 +1012,14 @@ footer {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(15, 15, 15, 0.97);
+        background: #0f0f0f;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 2.5rem;
         opacity: 0;
         visibility: hidden;
+        z-index: 999;
         transition: opacity var(--transition-base), visibility var(--transition-base);
     }
 
