@@ -1004,21 +1004,24 @@ footer {
     /* Nav: hamburger menu */
     .nav-toggle {
         display: block;
+        position: relative;
+        z-index: 1002;
     }
 
     .nav-links {
         display: none;
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
+        height: 100vh;
+        height: 100dvh;
         background: #0f0f0f;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 2.5rem;
-        z-index: 999;
+        z-index: 1001;
     }
 
     .nav-links.active {
@@ -1027,6 +1030,7 @@ footer {
 
     .nav-links a {
         font-size: 1.5rem;
+        color: var(--color-dark-text);
     }
 
     /* Hero: stack vertically, image on top */
