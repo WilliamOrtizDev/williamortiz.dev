@@ -16,7 +16,6 @@ Personal portfolio website showcasing skills, projects, and expertise in DevSecO
 - Security headers via Cloudflare Pages `_headers` configuration
 - Privacy Policy and Terms of Service pages
 - Custom 404 page with terminal-themed design
-- LaTeX resume source for version-controlled, text-as-code resume management
 
 ## Tech Stack
 
@@ -42,8 +41,6 @@ Personal portfolio website showcasing skills, projects, and expertise in DevSecO
 ├── functions/
 │   └── api/
 │       └── send.js                     # Cloudflare Pages Function (Resend)
-├── resume/
-│   └── William_Ortiz_Resume.tex        # LaTeX resume source
 ├── _headers                            # Cloudflare security headers
 ├── sitemap.xml                         # SEO sitemap
 ├── robots.txt                          # Search engine directives
@@ -75,15 +72,6 @@ Personal portfolio website showcasing skills, projects, and expertise in DevSecO
 1. Sign up at [resend.com](https://resend.com) and get an API key
 2. Verify your domain (`williamortiz.dev`) in the Resend dashboard
 3. Set `RESEND_API_KEY` as an environment variable in the Cloudflare Pages dashboard under **Settings > Environment variables**
-
-### Building the LaTeX Resume
-
-```bash
-cd resume
-pdflatex William_Ortiz_Resume.tex
-```
-
-Requires a LaTeX distribution (e.g., TeX Live, MiKTeX) with `fontawesome5`, `titlesec`, `enumitem`, `tabularx`, and `hyperref` packages.
 
 ## Deployment
 
