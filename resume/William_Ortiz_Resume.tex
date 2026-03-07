@@ -1,0 +1,153 @@
+%──────────────────────────────────────────────────────────────────────────────
+% William Ortiz – DevSecOps Engineer Resume
+%
+% Compile with: pdflatex William_Ortiz_Resume.tex
+% Requires:     texlive-latex-base, texlive-latex-extra, texlive-fonts-extra
+%──────────────────────────────────────────────────────────────────────────────
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=0.65in]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{fontawesome5}
+
+% ── Colors ───────────────────────────────────────────────────────────────────
+\definecolor{primary}{HTML}{800000}
+\definecolor{darktext}{HTML}{1A1A1A}
+\definecolor{graytext}{HTML}{555555}
+
+% ── Hyperlinks ───────────────────────────────────────────────────────────────
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    pdftitle={William Ortiz - DevSecOps Engineer Resume},
+    pdfauthor={William Ortiz},
+}
+
+% ── Section Formatting ──────────────────────────────────────────────────────
+\titleformat{\section}
+    {\Large\bfseries\color{primary}}
+    {}{0em}{}
+    [\vspace{-0.5em}\textcolor{primary}{\rule{\textwidth}{1pt}}]
+
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+% ── List Formatting ─────────────────────────────────────────────────────────
+\setlist[itemize]{
+    leftmargin=1.5em,
+    itemsep=2pt,
+    parsep=0pt,
+    topsep=4pt,
+    label=\textcolor{primary}{\textbullet}
+}
+
+% ── Spacing ─────────────────────────────────────────────────────────────────
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+
+% ── Custom Commands ─────────────────────────────────────────────────────────
+\newcommand{\position}[4]{%
+    \textbf{\large #1} \hfill \textcolor{graytext}{#2} \\
+    \textit{\color{graytext}#3} \hfill \textit{\color{graytext}#4}
+    \vspace{4pt}
+}
+
+\newcommand{\education}[4]{%
+    \textbf{#1} \hfill \textcolor{graytext}{#2} \\
+    \textit{\color{graytext}#3} \hfill \textit{\color{graytext}#4}
+    \vspace{4pt}
+}
+
+%══════════════════════════════════════════════════════════════════════════════
+\begin{document}
+
+% ── Header ──────────────────────────────────────────────────────────────────
+\begin{center}
+    {\Huge\bfseries\color{darktext} William Ortiz} \\[6pt]
+    {\large\color{primary} DevSecOps Engineer} \\[10pt]
+    \color{graytext}
+    \faEnvelope\enspace \href{mailto:contact@williamortiz.dev}{contact@williamortiz.dev} \quad
+    \faGlobe\enspace \href{https://williamortiz.dev}{williamortiz.dev} \quad
+    \faGithub\enspace \href{https://github.com/WilliamOrtizDev}{WilliamOrtizDev} \quad
+    \faLinkedin\enspace \href{https://www.linkedin.com/in/williamortizdev/}{williamortizdev}
+\end{center}
+
+\vspace{0.5em}
+
+% ── Summary ─────────────────────────────────────────────────────────────────
+\section{Professional Summary}
+
+Dedicated DevSecOps Engineer with a strong background in system administration
+and cybersecurity. Experienced in automating security practices throughout the
+software development lifecycle, building secure CI/CD pipelines, managing cloud
+infrastructure, and fostering a security-first culture. Skilled at integrating
+security seamlessly to enable innovation rather than impede it.
+
+% ── Skills ──────────────────────────────────────────────────────────────────
+\section{Technical Skills}
+
+\begin{tabularx}{\textwidth}{@{} l X @{}}
+    \textbf{Cloud \& Infra}    & AWS, Docker, Kubernetes, Red Hat Linux \\[3pt]
+    \textbf{Automation \& IaC} & Terraform, Ansible, Packer, GitLab CI/CD \\[3pt]
+    \textbf{Languages}         & Python, Bash \\[3pt]
+    \textbf{Security}          & IAM, Vulnerability Management, Network Security, SAST/DAST \\[3pt]
+    \textbf{Other}             & Git, Project Management, Agile/Scrum, Incident Response
+\end{tabularx}
+
+% ── Experience ──────────────────────────────────────────────────────────────
+\section{Professional Experience}
+
+% TODO: Replace with actual positions
+\position{DevSecOps Engineer}{Company Name}{City, State}{Month Year -- Present}
+\begin{itemize}
+    \item Designed and implemented secure CI/CD pipelines using GitLab CI, reducing deployment time by XX\% while integrating automated security scanning (SAST, DAST, container scanning).
+    \item Managed cloud infrastructure on AWS using Terraform and Ansible, ensuring compliance with security best practices and organizational policies.
+    \item Containerized applications with Docker and orchestrated with Kubernetes, implementing pod security policies and network policies.
+    \item Conducted vulnerability assessments and remediation, reducing critical vulnerabilities by XX\% within the first quarter.
+    \item Automated IAM policy management and access reviews, improving security posture and audit readiness.
+\end{itemize}
+
+\vspace{0.6em}
+
+\position{Systems Administrator}{Company Name}{City, State}{Month Year -- Month Year}
+\begin{itemize}
+    \item Administered Red Hat Linux servers across production and staging environments, maintaining 99.9\% uptime.
+    \item Implemented infrastructure-as-code practices using Ansible for configuration management across XX+ servers.
+    \item Developed monitoring and alerting solutions, reducing mean time to detection (MTTD) for security incidents.
+    \item Managed network security including firewall rules, VPN configurations, and intrusion detection systems.
+\end{itemize}
+
+% ── Projects ────────────────────────────────────────────────────────────────
+\section{Notable Projects}
+
+\textbf{Portfolio Website} \hfill \href{https://williamortiz.dev}{williamortiz.dev}
+\begin{itemize}
+    \item Built a responsive portfolio site with dynamic GitHub project loading, Resend API contact form integration, and full ADA/SEO compliance.
+\end{itemize}
+
+% TODO: Add more projects from GitHub or professional work
+
+% ── Education ───────────────────────────────────────────────────────────────
+\section{Education}
+
+% TODO: Replace with actual education
+\education{Bachelor of Science in Computer Science}{University Name}{City, State}{Graduation Year}
+
+% ── Certifications ──────────────────────────────────────────────────────────
+\section{Certifications}
+
+% TODO: Replace with actual certifications
+\begin{itemize}
+    \item AWS Certified Solutions Architect -- Associate \hfill \textcolor{graytext}{Year}
+    \item CompTIA Security+ \hfill \textcolor{graytext}{Year}
+\end{itemize}
+
+\end{document}
