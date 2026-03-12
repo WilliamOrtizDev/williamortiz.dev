@@ -1,43 +1,56 @@
 # William Ortiz - DevSecOps Portfolio
 
-## Description
-This is a personal portfolio website for William Ortiz, showcasing skills, projects, and expertise in DevSecOps. The site includes sections for About, Projects, Skills, and Contact, with dynamic loading of GitHub projects.
+Personal portfolio website showcasing skills, projects, and expertise in DevSecOps.
 
-## Table of Contents
-- [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/williamortiz.dev.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd williamortiz.dev
-   ```
-3. Open `index.html` in your preferred web browser.
-
-## Usage
-- Navigate through the website to explore different sections such as About, Projects, Skills, and Contact.
-- Click on the "Download Resume" button to download the resume PDF.
-- View dynamically loaded GitHub projects in the Projects section.
+**Live:** [williamortiz.dev](https://williamortiz.dev)
 
 ## Features
-- Responsive design with smooth scrolling and fade-in effects.
-- Dynamic loading of GitHub repositories.
-- Contact form for reaching out.
 
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
+- Responsive design with mobile-first approach and hamburger navigation
+- Dynamic GitHub project loading via the GitHub API
+- Contact form powered by [Resend](https://resend.com) API
+- Typing animation hero section
+- Scroll-driven fade-in animations (respects `prefers-reduced-motion`)
+- ADA/WCAG 2.1 AA accessible: skip link, ARIA labels, keyboard navigation, focus indicators
+- SEO optimized: Open Graph, Twitter Cards, JSON-LD structured data, sitemap
+- Security headers via Cloudflare Pages `_headers` configuration
+- Privacy Policy and Terms of Service pages
+- Custom 404 page with terminal-themed design
+
+## Tech Stack
+
+- **Frontend:** HTML, CSS, vanilla JavaScript
+- **Icons:** [Feather Icons](https://feathericons.com)
+- **Fonts:** [Inter](https://rsms.me/inter/) + [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
+- **Contact API:** [Resend](https://resend.com) via Cloudflare Pages Function
+- **Deployment:** [Cloudflare Pages](https://pages.cloudflare.com)
+
+## Project Structure
+
+```
+├── index.html                          # Main page
+├── privacy.html                        # Privacy Policy
+├── terms.html                          # Terms of Service
+├── 404.html                            # Custom 404 page
+├── assets/
+│   ├── css/
+│   │   ├── style.css                   # Main stylesheet
+│   │   └── pages.css                   # Secondary pages stylesheet
+│   ├── files/William_Ortiz_Resume.pdf  # Downloadable resume
+│   └── images/                         # Profile photo, favicon
+├── functions/
+│   └── api/
+│       └── send.js                     # Cloudflare Pages Function (Resend)
+├── _headers                            # Cloudflare security headers
+├── sitemap.xml                         # SEO sitemap
+├── robots.txt                          # Search engine directives
+└── package.json                        # Scripts
+```
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+[MIT](LICENSE)
 
 ## Contact
-For questions or support, please contact William Ortiz at [contact@williamortiz.dev](mailto:contact@williamortiz.dev).
+
+William Ortiz - [contact@williamortiz.dev](mailto:contact@williamortiz.dev)
