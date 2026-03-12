@@ -47,36 +47,6 @@ Personal portfolio website showcasing skills, projects, and expertise in DevSecO
 └── package.json                        # Scripts
 ```
 
-## Setup
-
-### Local Development
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/WilliamOrtizDev/williamortiz.dev.git
-   cd williamortiz.dev
-   ```
-
-2. Create a `.dev.vars` file with your Resend API key:
-   ```
-   RESEND_API_KEY=re_your_api_key_here
-   ```
-
-3. Run the development server (requires [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)):
-   ```bash
-   npm run dev
-   ```
-
-### Resend Configuration
-
-1. Sign up at [resend.com](https://resend.com) and get an API key
-2. Verify your domain (`williamortiz.dev`) in the Resend dashboard
-3. Set `RESEND_API_KEY` as an environment variable in the Cloudflare Pages dashboard under **Settings > Environment variables**
-
-## Deployment
-
-Push to `main` and Cloudflare Pages will automatically deploy. Ensure `RESEND_API_KEY` is set in the Cloudflare Pages environment variables.
-
 ## License
 
 [MIT](LICENSE)
