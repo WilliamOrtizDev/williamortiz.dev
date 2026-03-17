@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="404 — Page Not Found | William Ortiz"
+  description="The page you're looking for doesn't exist."
+  canonical="https://williamortiz.dev/"
+  noindex={true}
+>
+  <Nav />
+
+  <main id="main-content">
+    <div class="error-page">
+      <div class="container">
+        <p class="error-code" aria-hidden="true">404</p>
+        <h1>Page Not Found</h1>
+        <p class="error-message">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+
+        <div class="error-terminal" aria-hidden="true">
+          <div class="terminal-bar">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="terminal-prompt">$</span> curl -I williamortiz.dev</p>
+            <p class="terminal-response">HTTP/1.1 404 Not Found</p>
+            <p><span class="terminal-prompt">$</span> <span class="terminal-cursor"></span></p>
+          </div>
+        </div>
+
+        <a href="/" class="btn btn-primary">Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  document.getElementById('navbar')?.classList.add('scrolled');
+</script>

@@ -1,0 +1,72 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section id="about" class="section" aria-labelledby="about-heading">
+  <div class="container">
+    <p class="section-eyebrow">About Me</p>
+    <h2 id="about-heading" class="section-title reveal">Who I Am</h2>
+
+    <div class="about-layout">
+      <!-- Bio -->
+      <div class="about-bio reveal" style="--delay: 100ms">
+        <p>
+          I'm a dedicated DevSecOps Engineer with a strong background in system
+          administration and cybersecurity. My expertise lies in automating
+          security practices throughout the software development lifecycle,
+          ensuring compliance, and building robust, scalable, and secure
+          infrastructures.
+        </p>
+        <p>
+          I thrive on implementing secure CI/CD pipelines, performing
+          vulnerability assessments, managing cloud security, and fostering a
+          security-first culture. My goal is to integrate security seamlessly —
+          making it an enabler rather than a roadblock for innovation.
+        </p>
+        <p>
+          When I'm not securing pipelines, you might find me exploring new
+          security tooling, contributing to open-source projects, or enjoying
+          the Florida sunshine.
+        </p>
+
+        <!-- Tech tags -->
+        <div class="about-tags" aria-label="Technical skills">
+          {[
+            'Kubernetes', 'Docker', 'Terraform', 'Ansible',
+            'AWS', 'CI/CD', 'Python', 'Bash',
+            'Vault', 'ArgoCD', 'Helm', 'Linux',
+          ].map((tag) => (
+            <span class="about-tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Highlight cards -->
+      <div class="about-right" aria-label="Key strengths" role="list">
+        <div class="card highlight-card reveal" style="--delay: 150ms" role="listitem">
+          <Icon name="shield" size={20} />
+          <div>
+            <h3>Security First</h3>
+            <p>Integrating security at every stage of the SDLC</p>
+          </div>
+        </div>
+
+        <div class="card highlight-card reveal" style="--delay: 220ms" role="listitem">
+          <Icon name="git-merge" size={20} />
+          <div>
+            <h3>CI/CD Pipelines</h3>
+            <p>Automating build, test, and deployment workflows</p>
+          </div>
+        </div>
+
+        <div class="card highlight-card reveal" style="--delay: 290ms" role="listitem">
+          <Icon name="cloud" size={20} />
+          <div>
+            <h3>Cloud Native</h3>
+            <p>Designing scalable, cloud-first infrastructure</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

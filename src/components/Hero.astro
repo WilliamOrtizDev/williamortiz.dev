@@ -1,0 +1,132 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section id="home" class="hero" aria-label="Introduction">
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <!-- Text -->
+      <div class="hero-text reveal">
+        <p class="hero-tag">&lt; DevSecOps Engineer /&gt;</p>
+
+        <h1 class="hero-name">William<br />Ortiz</h1>
+
+        <p class="hero-role" aria-label="Current role">
+          <span aria-hidden="true">
+            <span class="typed-prefix">&gt;&nbsp;</span>
+            <span id="typed-text"></span>
+            <span class="typed-cursor" aria-hidden="true"></span>
+          </span>
+        </p>
+
+        <p class="hero-description">
+          Bridging Development, Security, and Operations to build resilient,
+          secure, and automated systems at scale.
+        </p>
+
+        <div class="hero-actions">
+          <a href="/#projects" class="btn btn-primary">
+            <Icon name="code" size={16} />
+            View Projects
+          </a>
+          <a
+            href="/files/William_Ortiz_Resume.pdf"
+            class="btn btn-outline"
+            download
+            aria-label="Download resume as PDF"
+          >
+            <Icon name="download" size={16} />
+            Download Resume
+          </a>
+        </div>
+
+        <div class="hero-social" aria-label="Social media links">
+          <a
+            href="mailto:contact@williamortiz.dev"
+            aria-label="Send email to William Ortiz"
+          >
+            <Icon name="mail" size={17} />
+          </a>
+          <a
+            href="https://github.com/WilliamOrtizDev"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile"
+          >
+            <Icon name="github" size={17} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/williamortizdev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+          >
+            <Icon name="linkedin" size={17} />
+          </a>
+        </div>
+      </div>
+
+      <!-- Photo -->
+      <div class="hero-photo" aria-hidden="true">
+        <div class="hero-photo-ring">
+          <img
+            src="/images/profile-photo.jpeg"
+            alt="Professional headshot of William Ortiz"
+            width="270"
+            height="270"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <a href="/#about" class="hero-scroll" aria-label="Scroll to about section" tabindex="-1">
+    <Icon name="chevron-down" size={16} />
+    <span>scroll</span>
+  </a>
+</section>
+
+<script>
+  // ── Typing animation ─────────────────────────────────────
+  (function () {
+    const phrases = [
+      'DevSecOps Engineer',
+      'Cloud Security Specialist',
+      'Infrastructure Automator',
+      'CI/CD Pipeline Architect',
+    ];
+    const el = document.getElementById('typed-text')!;
+    let phraseIdx = 0;
+    let charIdx   = 0;
+    let deleting  = false;
+
+    function typeLoop() {
+      const current = phrases[phraseIdx];
+      if (deleting) {
+        el.textContent = current.substring(0, charIdx - 1);
+        charIdx--;
+        if (charIdx === 0) {
+          deleting  = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          setTimeout(typeLoop, 400);
+          return;
+        }
+        setTimeout(typeLoop, 38);
+      } else {
+        el.textContent = current.substring(0, charIdx + 1);
+        charIdx++;
+        if (charIdx === current.length) {
+          deleting = true;
+          setTimeout(typeLoop, 2200);
+          return;
+        }
+        setTimeout(typeLoop, 78);
+      }
+    }
+    setTimeout(typeLoop, 700);
+  })();
+</script>
