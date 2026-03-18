@@ -1,10 +1,15 @@
 {
-    "name": "williamortiz-dev",
-    "version": "1.0.0",
-    "private": true,
-    "description": "William Ortiz - DevSecOps Portfolio Website",
-    "scripts": {
-        "dev": "npx wrangler pages dev . --compatibility-date=2024-01-01",
-        "deploy": "npx wrangler pages deploy ."
-    }
+  "name": "williamortiz-dev",
+  "type": "module",
+  "version": "2.0.0",
+  "private": true,
+  "description": "William Ortiz - DevSecOps Portfolio Website",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  }
 }

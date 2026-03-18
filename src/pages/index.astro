@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Education from '../components/Education.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Fragment slot="head">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "William Ortiz",
+        "url": "https://williamortiz.dev",
+        "jobTitle": "DevSecOps Engineer",
+        "email": "contact@williamortiz.dev",
+        "image": "https://williamortiz.dev/images/profile-photo.jpeg",
+        "description": "DevSecOps Engineer specializing in secure CI/CD pipelines, cloud security, and infrastructure automation.",
+        "sameAs": [
+          "https://github.com/WilliamOrtizDev",
+          "https://www.linkedin.com/in/williamortizdev/"
+        ],
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Western Governors University"
+          }
+        ],
+        "hasCredential": [
+          "RHCSA", "RHCE", "HashiCorp Terraform Associate", "Network+", "Security+"
+        ],
+        "knowsAbout": [
+          "DevSecOps", "Cloud Security", "CI/CD Pipelines", "Kubernetes",
+          "Docker", "Terraform", "Ansible", "AWS", "Python", "Bash",
+          "Vulnerability Management", "Infrastructure as Code"
+        ]
+      }
+    </script>
+  </Fragment>
+
+  <Nav />
+
+  <main id="main-content">
+    <Hero />
+    <About />
+    <Projects />
+    <Education />
+    <Contact />
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Scroll-reveal: Intersection Observer
+  (function () {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.07 }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  })();
+</script>

@@ -1,0 +1,91 @@
+---
+// Nav component — fixed header, transparent → blurred-dark on scroll
+---
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Primary navigation" id="navbar">
+  <div class="container nav-container">
+    <a href="/#home" class="nav-logo" aria-label="William Ortiz — Home">
+      <span class="logo-bracket">{'{'}</span>WO<span class="logo-bracket">{'}'}</span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      id="nav-toggle"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
+
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/#education">Education</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  (function () {
+    const navbar    = document.getElementById('navbar')!;
+    const navToggle = document.getElementById('nav-toggle')!;
+    const navLinks  = document.getElementById('nav-links')!;
+
+    // ── Mobile toggle ──────────────────────────────────────
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      navToggle.setAttribute(
+        'aria-label',
+        expanded ? 'Open navigation menu' : 'Close navigation menu'
+      );
+      navLinks.classList.toggle('active');
+      document.body.classList.toggle('nav-open');
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open navigation menu');
+        document.body.classList.remove('nav-open');
+      });
+    });
+
+    // ── Scroll: add/remove .scrolled ──────────────────────
+    function updateNav() {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+
+      // Active link tracking
+      const sections = document.querySelectorAll<HTMLElement>('section[id]');
+      const navLinkEls = navLinks.querySelectorAll<HTMLAnchorElement>('a');
+      let current = '';
+
+      sections.forEach((sec) => {
+        if (window.scrollY >= sec.offsetTop - 130) {
+          current = sec.id;
+        }
+      });
+
+      navLinkEls.forEach((link) => {
+        link.classList.toggle(
+          'active',
+          link.getAttribute('href') === '/#' + current
+        );
+      });
+
+      // Back to top
+      const btn = document.getElementById('back-to-top');
+      if (btn) {
+        btn.classList.toggle('hidden', window.scrollY <= 600);
+      }
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  })();
+</script>

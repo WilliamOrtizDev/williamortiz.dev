@@ -1,0 +1,135 @@
+---
+// Projects are loaded client-side for real-time GitHub data
+---
+
+<section id="projects" class="section section-alt" aria-labelledby="projects-heading">
+  <div class="container">
+    <p class="section-eyebrow">Open Source</p>
+    <h2 id="projects-heading" class="section-title reveal">My Projects</h2>
+    <p class="section-subtitle reveal" style="--delay: 80ms">
+      Open-source work and personal projects pulled live from GitHub.
+    </p>
+
+    <div
+      class="project-grid"
+      id="project-grid"
+      role="list"
+      aria-label="GitHub projects"
+      aria-live="polite"
+    >
+      <!-- Skeleton placeholders -->
+      {Array(6).fill(null).map(() => (
+        <div class="card project-skeleton" aria-hidden="true">
+          <div class="skel skel-title"></div>
+          <div class="skel skel-line skel-short"></div>
+          <div class="skel skel-line"></div>
+          <div class="skel skel-line skel-shorter"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const grid     = document.getElementById('project-grid')!;
+    const username = 'WilliamOrtizDev';
+
+    const langColors: Record<string, string> = {
+      JavaScript:  '#f1e05a',
+      TypeScript:  '#3178c6',
+      Python:      '#3572A5',
+      Shell:       '#89e051',
+      Bash:        '#89e051',
+      Go:          '#00ADD8',
+      Rust:        '#dea584',
+      HTML:        '#e34c26',
+      CSS:         '#563d7c',
+      Dockerfile:  '#384d54',
+      YAML:        '#cb171e',
+      HCL:         '#844fba',
+      Ruby:        '#cc342d',
+      Java:        '#b07219',
+    };
+
+    function escapeHtml(str: string): string {
+      const div = document.createElement('div');
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    }
+
+    function arrowRightSvg(): string {
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
+    }
+
+    function starSvg(): string {
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+    }
+
+    function forkSvg(): string {
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>`;
+    }
+
+    interface Repo {
+      fork: boolean;
+      name: string;
+      description: string | null;
+      language: string | null;
+      stargazers_count: number;
+      forks_count: number;
+      html_url: string;
+    }
+
+    fetch(
+      `https://api.github.com/users/${username}/repos?sort=updated&direction=desc&per_page=100`
+    )
+      .then((r) => {
+        if (!r.ok) throw new Error(r.statusText);
+        return r.json() as Promise<Repo[]>;
+      })
+      .then((repos) => {
+        const filtered = repos.filter((r) => !r.fork).slice(0, 9);
+        grid.innerHTML = '';
+
+        if (filtered.length === 0) {
+          grid.innerHTML =
+            '<p class="project-message">No public repositories found.</p>';
+          return;
+        }
+
+        filtered.forEach((repo) => {
+          const name  = repo.name.replace(/[-_]/g, ' ');
+          const desc  = repo.description ?? 'No description provided.';
+          const lang  = repo.language ?? '';
+          const color = langColors[lang] ?? '#666';
+
+          const card = document.createElement('article');
+          card.className = 'card project-card';
+          card.setAttribute('role', 'listitem');
+          card.innerHTML = `
+            <h3>${escapeHtml(name)}</h3>
+            <p class="project-desc">${escapeHtml(desc)}</p>
+            <div class="project-meta">
+              ${lang ? `<span class="project-lang"><span class="lang-dot" style="background:${color}"></span>${escapeHtml(lang)}</span>` : ''}
+              ${repo.stargazers_count > 0 ? `<span class="project-stat">${starSvg()} ${repo.stargazers_count}</span>` : ''}
+              ${repo.forks_count > 0 ? `<span class="project-stat">${forkSvg()} ${repo.forks_count}</span>` : ''}
+            </div>
+            <a
+              href="${escapeHtml(repo.html_url)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project-link"
+              aria-label="View ${escapeHtml(name)} on GitHub"
+            >
+              View on GitHub ${arrowRightSvg()}
+            </a>
+          `;
+          grid.appendChild(card);
+        });
+      })
+      .catch(() => {
+        grid.innerHTML =
+          '<p class="project-message">Could not load projects. Visit <a href="https://github.com/WilliamOrtizDev" target="_blank" rel="noopener noreferrer">github.com/WilliamOrtizDev</a> directly.</p>';
+      });
+  })();
+</script>

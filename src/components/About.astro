@@ -1,0 +1,73 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section id="about" class="section" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="about-layout">
+      <!-- Bio -->
+      <div class="about-bio reveal" style="--delay: 100ms">
+        <p class="section-eyebrow">About Me</p>
+        <h2 id="about-heading" class="section-title" style="margin-bottom: 1.5rem;">Who I Am</h2>
+        <p>
+          I'm a dedicated DevSecOps Engineer with a strong background in system
+          administration and cybersecurity. My expertise lies in automating
+          security practices throughout the software development lifecycle,
+          ensuring compliance, and building robust, scalable, and secure
+          infrastructures.
+        </p>
+        <p>
+          I thrive on implementing secure CI/CD pipelines, performing
+          vulnerability assessments, managing cloud security, and fostering a
+          security-first culture. My goal is to integrate security seamlessly —
+          making it an enabler rather than a roadblock for innovation.
+        </p>
+        <p>
+          When I'm not securing pipelines, you might find me exploring new
+          security tooling, contributing to open-source projects, or enjoying
+          the Florida sunshine.
+        </p>
+      </div>
+
+      <!-- Highlight cards + tech tags -->
+      <div class="about-right" aria-label="Key strengths and skills">
+        <div class="highlight-list" role="list">
+          <div class="card highlight-card reveal" style="--delay: 150ms" role="listitem">
+            <Icon name="shield" size={20} />
+            <div>
+              <h3>Security First</h3>
+              <p>Integrating security at every stage of the SDLC</p>
+            </div>
+          </div>
+
+          <div class="card highlight-card reveal" style="--delay: 220ms" role="listitem">
+            <Icon name="git-merge" size={20} />
+            <div>
+              <h3>CI/CD Pipelines</h3>
+              <p>Automating build, test, and deployment workflows</p>
+            </div>
+          </div>
+
+          <div class="card highlight-card reveal" style="--delay: 290ms" role="listitem">
+            <Icon name="cloud" size={20} />
+            <div>
+              <h3>Cloud Native</h3>
+              <p>Designing scalable, cloud-first infrastructure</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tech tags -->
+        <div class="about-tags reveal" style="--delay: 350ms" aria-label="Technical skills">
+          {[
+            'Kubernetes', 'Docker', 'Terraform', 'Ansible',
+            'AWS', 'CI/CD', 'Python', 'Bash',
+            'Vault', 'ArgoCD', 'Helm', 'Linux',
+          ].map((tag) => (
+            <span class="about-tag">{tag}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
