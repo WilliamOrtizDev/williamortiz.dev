@@ -1,0 +1,81 @@
+---
+import Icon from './Icon.astro';
+
+const degrees = [
+  {
+    title: 'B.S. Computer Science',
+    institution: 'Western Governors University',
+  },
+  {
+    title: 'B.S. Business Administration',
+    institution: 'Western Governors University',
+  },
+];
+
+const certs = [
+  { title: 'Red Hat Certified System Administrator', short: 'RHCSA', issuer: 'Red Hat' },
+  { title: 'Red Hat Certified Engineer', short: 'RHCE', issuer: 'Red Hat' },
+  { title: 'Terraform Associate', short: '003', issuer: 'HashiCorp' },
+  { title: 'CompTIA Network+', short: 'N+', issuer: 'CompTIA' },
+  { title: 'CompTIA Security+', short: 'S+', issuer: 'CompTIA' },
+];
+---
+
+<section
+  id="education"
+  class="section"
+  aria-labelledby="education-heading"
+>
+  <div class="container">
+    <p class="section-eyebrow">Credentials</p>
+    <h2 id="education-heading" class="section-title reveal">
+      Education &amp; Certifications
+    </h2>
+
+    <div class="edu-layout">
+      <!-- Education -->
+      <div>
+        <p class="edu-group-label">Education</p>
+        <ul class="edu-list" role="list">
+          {degrees.map((d, i) => (
+            <li
+              class="card edu-card reveal"
+              style={`--delay: ${i * 80}ms`}
+              role="listitem"
+            >
+              <div class="edu-icon" aria-hidden="true">
+                <Icon name="book-open" size={18} />
+              </div>
+              <div class="edu-info">
+                <h3>{d.title}</h3>
+                <p>{d.institution}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Certifications -->
+      <div>
+        <p class="edu-group-label">Certifications</p>
+        <ul class="cert-grid" role="list">
+          {certs.map((c, i) => (
+            <li
+              class="card cert-card reveal"
+              style={`--delay: ${i * 70}ms`}
+              role="listitem"
+            >
+              <div class="cert-badge" aria-hidden="true">
+                <Icon name="award" size={16} />
+              </div>
+              <div class="cert-info">
+                <h3>{c.title}</h3>
+                <p>{c.issuer}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
